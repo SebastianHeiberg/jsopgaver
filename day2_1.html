@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="top" style="width: 100px;margin: 1px;">&nbsp;</div>
+    <div id="middle" style="width: 100px;margin: 1px;">&nbsp;</div>
+    <div id="buttom" style="width: 100px;margin: 1px;">&nbsp;</div>
+    
+    <script>
+        const divs = document.querySelectorAll("div")
+        .forEach(element => {
+        element.style.background = "red"    
+        });
+    </script>
+
+    <button id="btn1"> Change colors</button>
+
+    <script>
+
+    var btn = document.querySelector("#btn1")
+
+    function assigncolor() { return "#" + Math.floor(Math.random() * 16777215).toString(16) }
+
+    btn.onclick = function() {
+    document.querySelector("#top").style.background = assigncolor()
+    document.querySelector("#middle").style.background = assigncolor()
+    document.querySelector("#buttom").style.background = assigncolor()
+    }
+    </script>
+
+</body>
+</html>

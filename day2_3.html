@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="initialize-btn">Load Data</button>
+    <ul id="ul1"></ul>
+    <form>
+        <input id="name" type="text" id="name">
+        <button id="btn1"> Add name</button>
+        <button id="btn2"> remove first</button>
+        <button id="btn3"> remove last</button>
+    </form>
+    <script> 
+        const names = ["Lars","Peter","Jan","Ian"]
+        function makeList() {
+        const lis = names.map(n => `<li>${n}</li>`).join("")
+        document.querySelector("#ul1").innerHTML = lis
+    }
+
+    document.getElementById("initialize-btn").onclick = ()=>makeList()
+    
+    document.querySelector("#btn1").onclick = (evt) => {
+        evt.preventDefault()
+        names.push(encode(name))
+        makeList()
+    }
+
+    document.querySelector("#btn2").onclick = (evt) => {
+        evt.preventDefault()
+        names.shift()
+        makeList()
+    }
+
+    document.querySelector("#btn3").onclick = (evt) => {
+        evt.preventDefault()
+        names.pop()
+        makeList()
+    }
+
+    function encode(str) {
+        str = str.replace(/&/g, "&amp;");
+        str = str.replace(/>/g, "&gt;");
+        str = str.replace(/</g, "&lt;");
+        str = str.replace(/"/g, "&quot;");
+        str = str.replace(/'/g, "&#039;");
+        return str;
+    }
+
+
+    </script>
+
+
+</body>
+</html>

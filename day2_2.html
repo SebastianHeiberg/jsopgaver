@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .my-div {width: 25px; height: 25px;background-color:red; margin:1px;}
+    </style>     
+</head>
+<body>
+    <div id="outer">
+    <div id="nr1" class="my-div"></div>
+    <div id="nr2" class="my-div"></div>
+    <div id="nr3" class="my-div"></div>
+    <div id="nr4" class="my-div"></div>
+    <div id="nr5" class="my-div"></div>
+    <div id="nr6" class="my-div"></div>
+    <div id="nr7" class="my-div"></div>
+    <div id="nr8" class="my-div"></div>
+    <div id="nr9" class="my-div"></div>
+    <div id="nr10" class="my-div"></div>
+    <div id = "text"></div>
+    </div>  
+
+    <script> 
+    var btn = document.querySelector("#outer")
+    btn.onclick = function (e) { 
+        const target = e.target
+        document.querySelector("#text").textContent = `Hi from ${target.id}`
+    } 
+        
+        
+
+    </script>
+</body>
+</html>
