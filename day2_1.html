@@ -7,21 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-    
+
     <div id="top" style="width: 100px;margin: 1px;">&nbsp;</div>
     <div id="middle" style="width: 100px;margin: 1px;">&nbsp;</div>
     <div id="buttom" style="width: 100px;margin: 1px;">&nbsp;</div>
     
-    <script>
-        const divs = document.querySelectorAll("div")
-        .forEach(element => {
-        element.style.background = "red"    
-        });
-    </script>
-
     <button id="btn1"> Change colors</button>
 
     <script>
+
+    const divs = document.querySelectorAll("div")
+        .forEach(element => {
+        element.style.background = "red"    
+        });
+    
 
     var btn = document.querySelector("#btn1")
 

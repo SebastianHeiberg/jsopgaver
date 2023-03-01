@@ -20,14 +20,27 @@
   <main>
     <table class="table">
         <thead>
-        <tr>
-            <th>ID</th><th>Year</th><th>Make</th><th>Model</th><th>Price</th>
-        </tr>
-        </thead>
+            <tr>
+              <th id="id" data-type="number" data-order="asc">ID</th>
+              <th id="year" data-type="number" data-order="asc">Year</th>
+              <th id="make" data-type="string" data-order="asc">Make</th>
+              <th id="model" data-type="string" data-order="asc">Model</th>
+              <th id="price" data-type="number" data-order="asc">Price</th>
+            </tr>
+          </thead> 
         <tbody id="tbody"></tbody>
     </table>
+    <form>
+      <div class="mb-3">
+        <label for="number" class="form-label">Price</label>
+        <input type="number" name="number" id="number" placeholder="input a number">
+        <button id="btnSearch" class="btn btn-primary">Price less than</button>
+        <button id="btnClear" class="btn btn-primary">Clear</button>
+      </div>
+    </form>
     
     <script> 
+  //original list of cars
     const cars = [
   { id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000 },
   { id: 2, year: 1999, make: 'Chevy', model: 'Venture', price: 4900 },
@@ -35,7 +48,124 @@
   { id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799 },
   { id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799 }]
 
-  
+  //init display all cars
+  displayCars(cars) 
+
+  //displays all cars it gets      
+  function displayCars (listOfCars) {
+    const mappedcars = listOfCars.map(element =>`<tr><td>${element.id}</td><td>${element.year}</td><td>${element.make}</td><td>${element.model}</td><td>${element.price}</td></tr>`)
+  document.querySelector("#tbody").innerHTML = mappedcars.join("")
+  }
+
+  //filter by input price
+  var btnSearch = document.querySelector("#btnSearch")
+  btnSearch.onclick = function (evt) {
+    evt.preventDefault()
+    const price = document.querySelector("#number").value
+    const pricedCars = cars.filter(car => car.price < price)
+    displayCars(pricedCars)
+  } 
+
+  //clear input by price
+  var btnClear = document.querySelector("#btnClear")
+  btnClear.onclick = function (evt) {
+    evt.preventDefault()
+    document.querySelector("#number").value = ''
+    displayCars(cars)
+  }
+
+
+  const tableHead = document.querySelector('thead');
+tableHead.onclick = function (event) {
+  const columnId = event.target.id
+  if (columnId) {
+    const column = columnId;
+    const isAscending = event.target.dataset.order === 'asc';
+    const dataType = event.target.dataset.type;
+    const sortedCars = cars.sort((a, b) => {
+      if (dataType === 'number') {
+        return isAscending ? a[column] - b[column] : b[column] - a[column];
+      } else if (dataType === 'string') {
+        return isAscending ? a[column].localeCompare(b[column]) : b[column].localeCompare(a[column]);
+      } else {
+        return 0;
+      }
+    });
+    event.target.dataset.order = isAscending ? 'desc' : 'asc';
+    displayCars(sortedCars);
+  }
+}
+
+
+
+/*   //sort by make
+  let isAscendingMake = true;
+  const sortMake = document.querySelector("#carMake")
+  sortMake.onclick = function () {  
+    let sortedCars
+     if (isAscendingMake) {sortedCars = cars.sort((carA, carB) => carA.make.localeCompare(carB.make))}
+     if (!isAscendingMake) {sortedCars = cars.sort((carA, carB) => carB.make.localeCompare(carA.make))}
+     isAscendingMake = !isAscendingMake
+    displayCars(sortedCars)  
+  }
+
+  // sort by year
+let isAscendingYear = true;
+const sortYear = document.querySelector("#carYear")
+sortYear.onclick = function () {  
+  let sortedCars
+  if (isAscendingYear) {
+    sortedCars = cars.sort((carA, carB) => carA.year - carB.year)
+  }
+  if (!isAscendingYear) {
+    sortedCars = cars.sort((carA, carB) => carB.year - carA.year)
+  }
+  isAscendingYear = !isAscendingYear
+  displayCars(sortedCars)  
+}
+
+//sort by id
+let isAscendingId = true;
+const sortId = document.querySelector("#carId");
+sortId.onclick = function() {
+  let sortedCars;
+  if (isAscendingId) {
+    sortedCars = cars.sort((carA, carB) => carA.id - carB.id);
+  } else {
+    sortedCars = cars.sort((carA, carB) => carB.id - carA.id);
+  }
+  isAscendingId = !isAscendingId;
+  displayCars(sortedCars);
+};
+
+//sort by model
+let isAscendingModel = true;
+const sortModel = document.querySelector("#carModel");
+sortModel.onclick = function() {
+  let sortedCars;
+  if (isAscendingModel) {
+    sortedCars = cars.sort((carA, carB) => carA.model.localeCompare(carB.model));
+  } else {
+    sortedCars = cars.sort((carA, carB) => carB.model.localeCompare(carA.model));
+  }
+  isAscendingModel = !isAscendingModel;
+  displayCars(sortedCars);
+};
+
+//sort by price 
+let isAscendingPrice = true;
+const sortPrice = document.querySelector("#carPrice");
+sortPrice.onclick = function() {
+  let sortedCars;
+  if (isAscendingPrice) {
+    sortedCars = cars.sort((carA, carB) => carA.price - carB.price);
+  } else {
+    sortedCars = cars.sort((carA, carB) => carB.price - carA.price);
+  }
+  isAscendingPrice = !isAscendingPrice;
+  displayCars(sortedCars);
+};
+ */
 
     </script>
 

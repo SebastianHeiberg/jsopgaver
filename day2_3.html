@@ -26,6 +26,8 @@
     
     document.querySelector("#btn1").onclick = (evt) => {
         evt.preventDefault()
+        const name = document.querySelector("#name").value
+        document.querySelector("#name").value = ''
         names.push(encode(name))
         makeList()
     }
