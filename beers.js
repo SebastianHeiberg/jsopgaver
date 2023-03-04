@@ -35,6 +35,8 @@ function showBeers() {
 }
 
 // Intet af dette virker og jeg forstår ikke hvorfor.
+
 // document.querySelector("#abv-btn").onclick = showBeers
+
 // var button = document.getElementById("abv-btn")
 // button.addEventListener("click",showBeers, false)
