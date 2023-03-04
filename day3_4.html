@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .parent {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            gap: 1px 1px;
+        }
+        .item {
+            background-color: lightskyblue;
+            border: 1px solid #fff;
+            padding: 5px 5px 5px 2em;
+            min-height: 250px;
+        }
+    </style>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">  
+</head>
+<body style="font-family: sans-serif">
+<div style="margin-left: 10%;width: 75%;margin-right: auto">
+    <h2>Car's 'R' Us Client Demo - Version poor ;-)</h2>
+    <div class="parent">
+        <div class="item">
+            <h3>Show all Cars</h3>
+            <button id="btn-get-all">Get all</button>
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Price Pr. Day</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyAllCars">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="item">
+            <h3>Find a single Car</h3>
+            <label for="text-for-id">Id</label>&nbsp;<input id="text-for-id"/>
+            <button id="btnFindCar">Find</button>
+            <div class="table-responsive">
+                <table class="table table-primary">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Brand</th>
+                            <th scope="col">Price Pr. Day</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyOneCar">                    
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+        <div class="item">
+            <h3>Add a Car</h3>
+            <div><label for="input-brand">Brand</label>&nbsp;<input id="input-brand"/></div>
+            <div><label for="input-model">Model</label>&nbsp;<input id="input-model"/></div>
+            <div><label for="input-pricePrDay">Price pr. day</label>&nbsp;<input id="input-pricePrDay"/></div>
+            <div><label for="input-bestDiscount">Best discount</label>&nbsp;<input id="input-bestDiscount"/></div>
+            
+            <button id="submit-car">Submit new car</button>
+            <p id="return-carData"></p>
+            
+        </div>
+        <div class="item">
+            <h3>Edit a Car</h3>
+            <label for="text-for-id2">Id</label>&nbsp;<input id="text-for-id2"/>
+            <button id="btn-search-carToEdit">Find car to edit</button>
+            <div><label for="edit-brand">Edit Brand</label>&nbsp;<input id="edit-brand"/></div>
+            <div><label for="edit-model">Edit Model</label>&nbsp;<input id="edit-model"/></div>
+            <div><label for="edit-pricePrDay">Edit Price pr. day</label>&nbsp;<input id="edit-pricePrDay"/></div>
+            <div><label for="edit-bestDiscount">Edit Best discount</label>&nbsp;<input id="edit-bestDiscount"/></div>
+            <button id="submit-edited-car">Submit edited car</button>
+            <p id="edited-success"></p>
+        </div>
+    </div>
+</div>
+<script src="cars.js"></script>
+</body>
+</html>
